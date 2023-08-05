@@ -1,0 +1,46 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<script src="https://kit.fontawesome.com/323f4aa369.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="/css/form.css">
+<script src="/formvalidate.js"></script>
+</head>
+<body >
+	
+		
+	
+	<div class="container">
+	<div class="upper">
+		<p></p>	<h2></h2>	<p></p>	<h2></h2>	<p></p><h2></h2><p></p>
+		
+	</div>
+<div class="lower"></div>
+<div class ="center" th:each="product:${products}" >
+
+
+<form action="/userdata" method="post" class="userdata" >
+	<div class="uicon">
+		<i class="fa-solid fa-user fa-bounce" style="font-size:72px;color: #00eae2;"></i>
+</div>
+<div class="person">
+	
+	<label>Name</label><input type="text"  name="ename"><br>
+<label>Mobile</label><input type="text" name="phone" ><br>
+<label>Email</label><input type="text" name="Email" ><br>
+</div>
+<div class="sicon">
+		<i class="fa-solid fa-tree-city fa-beat-fade fa-lg" style="font-size:70px; color: #00eae2;"></i>
+</div>
+<div class="address"><label>State</label><input type="text" name="state" ><br>
+<label>City</label><input type="text" name="City" ><br>
+<label>Pincode</label><input type="text" name="Pincode" ><br></div>
+<div class="aicon">
+		<i class="fa-solid fa-house-user fa-shake fa-lg" style="font-size:70px; color: #00eae2;"></i>
+</div>
+<div class="add"><label>Address</label><textarea rows="7" cols="40" name="Address" ></textarea><br>
+ </div><input type="hidden" name="size" th:value="${size}">
+<input type="hidden" name="productid" th:value="${product.id}">
+
+<input type="submit"  onclick="return validateForm()"></form> </div>
+</div>
+</body>
+</html>

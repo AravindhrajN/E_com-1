@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head> <title>Order summary</title>
+		<link rel="stylesheet"  th:href="@{/css/orderdata.css}">
+	</head>
+	<body>
+		  <script th:inline="javascript">
+        function submitForm(actionUrl) {
+            var form = document.getElementById('orderForm');
+            form.action = actionUrl;
+            form.submit();
+        }
+        	function min(q){
+			if(q>1){
+				 var url= `/ordermin?qa=${q}`;
+				      window.location.href = url;
+			}
+			else{
+				  alert("you reached product's starting stock!");
+            event.preventDefault();
+            return false;
+			}
+		}
+		function max(q){
+			if(q<10){
+			var url=`/ordermax?qa=${q}`;
+			     window.location.href = url;
+			
+		}
+		 else {
+            alert("you reached product's maximum stocks!");
+            event.preventDefault();
+            return false;
+        }
+        }
+    </script>
+		
+<form id="orderForm" th:object="${user}" method="post">
+ 
+			 <h1>Order summary</h1>
+		<div class="orderdetails">
+		<div class="boxdata"> 
+			<h3>Name: <span th:text="${product.Pname}"></span></h3>
+
+ <h3 >size:<span th:text="${user.size}"></span></h3>
+  <h3 >Quantity:<button th:onclick="min([[${user.quantity}]])">-</button><span th:text="${user.quantity}"></span><button th:onclick="max([[${user.quantity}]])">+</button></h3>
+  <h3>Price: <span th:text="'RS-'+${product.Pprice}"> </span></h3>
+  <h3>Discount: </h3><br>
+  <h3 class="totalprice">Total Price: <span th:text="'RS-'+${product.Pprice}"> </span></h3><br>
+  </div>
+
+ <div class="place">
+<p>STATE:<span th:text="${user.State}"></span></p><br>
+<p>CITY:<span th:text="${user.City}"></span></p><br>
+<p> PINCODE: <span th:text="${user.pincode}"></span></p></div>
+</div>
+<div class="add"><h3> ADDRESS:</h3><p th:text="${user.Address}"></p></div>
+		<div class="paymode"><h2>THE PAYMENT METHOD OPTION</h2><br>
+<button type"button" class="button" th:onclick="submitForm('/order')" >CASH ON DELIVERY</button>
+<button type"button" class="button" disabled onclick="submitForm('/online')" target="_blank">ONLINE PAYMENT</button></div>
+</form>
+	</body>
+</html>

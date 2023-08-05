@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>My_cart</title>
+	<link rel="stylesheet" href="/css/cart.css">
+	<script>
+		function min(q,id){
+			if(q>1){
+				 var url= `/cartmin?qa=${q}&id=${id}`;
+				      window.location.href = url;
+			}
+			else{
+				  alert("you reached product's starting stock!");
+            event.preventDefault();
+            return false;
+			}
+		}
+		function max(q,id){
+			if(q<10){
+			var url=`/cartmax?qa=${q}&id=${id}`;
+			     window.location.href = url;
+			
+		}
+		 else {
+            alert("you reached product's maximum stocks!");
+            event.preventDefault();
+            return false;
+        }
+        }
+       function remove(id){
+				var url=`/remove?id=${id}`;
+			     window.location.href = url;
+		}
+		 function buy(id,size){
+				var url=`/buy?id=${id}&size=${size}`;
+			     window.location.href = url;
+		}
+	</script>
+</head>
+<body>
+	<h2>MY_CART</h2>
+	<div th:each="product:${Cart}">
+		<div class="container">
+			 <img th:src="@{'/getimage/' + ${product.id}}"/>
+			<p th:text="${product.Pname}">
+              </p><p th:text="${product.size}"></p>
+
+ <button th:onclick="min([[${product.quantity}]],[[${product.id}]])"  class="min">-</button>
+		<span  th:text="${product.quantity}"></span><button th:onclick="max([[${product.quantity}]],[[${product.id}]])" class="add">+</button>	
+					<p th:text="'Rs: '+${product.Pprice}"></p> <div class="option"> <button th:onclick="remove([[${product.id}]])" class="remove">REMOVE</button><a ><button th:onclick="buy([[${product.id}]],[[${product.size}]])" class="buy">BUY</button></a></div>
+		</div>
+	</div>
+</body>
+</html>

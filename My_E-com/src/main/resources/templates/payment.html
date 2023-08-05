@@ -1,0 +1,39 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Order-Successful</title>
+	
+	<style>
+		
+		  body{
+			  background-color:chartreuse;
+		  }
+		  h1{  display: flex;
+			  color: darkblue;
+			  justify-content: center;
+			  font-size: 50px;
+		  }
+		p{  
+     padding:10px 50px;
+          word-spacing: 5px;
+			color: white;
+			font-size: 30px;
+          font-family:cursive;
+		}
+span{
+  color:#f28500;
+     padding:10px ;
+}
+	</style>
+	
+
+	<script src="https://kit.fontawesome.com/323f4aa369.js" crossorigin="anonymous"></script>
+</head>	
+	<body> <h1>Your Order Done!</h1>
+
+		<p>Your order for the product is done , the order id : <span th:text="${orderid}"></span> and the reference id :<span th:text="${refid}"></span>
+		 and further details we send the sms that contains the track_Your_order link .</p><p>Using the link you can track the product's shipping details.
+		Thank you for  choosing our product! Have a Good Day.</p>
+	</body>
+	
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>MY_E-COM</title>
+ <link rel="stylesheet" href="css/mycss.css">
+   
+</head>
+<body>
+		
+		
+		 <nav class="nav">  
+			<a href="#" class="iduser">Share_Your_Size</a>
+    <ul class="navbar">
+      <li><a href="/about" target="_blank">About</a></li>
+      <li><a href="/service" target="_blank">Services</a></li>
+      <li><a href="/contactus" target="_blank">Contact</a></li>
+       <li><a href="/mycart" target="_blank">MY_Cart</a></li>
+    </ul>		
+		 </nav>
+    <div th:each="product:${products}"   class="container">
+	
+ <div class="product-image">
+    <img th:src="@{'/getimage/' + ${product.id}}"/>
+    </div>
+    
+    
+        <div class="product_details" >
+			
+				<script  th:inline="javascript">
+			 var productId ='';
+			 var selectedSize='';
+	 function selectSize(size,pro) {	
+		 	 
+    selectedSize = size;
+    productId=pro;
+    console.log(selectedSize);
+        console.log(productId);
+  
+  }
+   
+       
+     
+    
+    function updateBuyLink() {
+	
+      
+        if (selectedSize) {
+			
+             var url = `/buy?id=${productId}&size=${selectedSize}`;
+          
+             window.open(url, '_blank');
+             productId='';
+             selectedSize='';
+            return true;
+        } else {
+            alert('Please select a size!');
+            event.preventDefault();
+            return false;
+        }
+        
+    }
+     function updatecartLink() {
+        
+   
+        if (selectedSize) {
+      
+            var url2= `/cart?id=${productId}&size=${selectedSize}`;
+        
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('GET', url2, true);
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                alert('Successfully added!');
+            } else {
+                alert('Error: ' + xhr.status);
+            }
+        };
+
+        xhr.onerror = function () {
+            alert('Error: Request failed.');
+        };
+        xhr.send();
+         productId='';
+             selectedSize='';
+            return true;
+        } else {
+            alert('Please select a size!');
+            event.preventDefault();
+            return false;
+        }
+    }
+</script>
+			 
+			<p class="product-title" th:text="${product.Pname}"></p>
+			<p class="product-description" th:text="${product.pdes}"></p>
+		
+ <div class="size">
+      SIZE:
+      <button type="button" class="button" value="S" th:onclick="selectSize('S',[[${product.id}]])">S</button>
+      <button type="button" class="button" value="M" th:onclick="selectSize('M',[[${product.id}]])">M</button>
+      <button type="button" class="button" value="L" th:onclick="selectSize('L',[[${product.id}]])">L</button>
+      <button type="button" class="button" value="XL" th:onclick="selectSize('XL',[[${product.id}]])">XL</button>
+    </div> 
+<p class="product-price">Price: ₹<span  th:text="${product.Pprice}"></span></p>
+ <a  onclick="updateBuyLink()" target="_blank" class="buy-button">BUY</a>
+  <a  onclick="updatecartLink()"  class="add-to-cart-button">
+  ADDCART
+</a>
+		</div>
+		</div>
+	</body>
+</html>
