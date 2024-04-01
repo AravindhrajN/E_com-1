@@ -4,8 +4,8 @@ FROM maven:3-openjdk-17 AS build
 
 
 # Copy Maven project files
-COPY pom.xml .
-COPY src ./src
+
+COPY . .
 
 # Resolve Maven dependencies
 RUN mvn dependency:go-offline
