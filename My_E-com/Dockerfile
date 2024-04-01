@@ -1,8 +1,7 @@
 # Stage 1: Build the Maven project
 FROM maven:3-openjdk-17 AS build
 
-# Set working directory
-WORKDIR /app
+
 
 # Copy Maven project files
 COPY pom.xml .
@@ -22,7 +21,7 @@ FROM tomcat:9-jdk17-openjdk-slim AS deploy
 WORKDIR /usr/local/tomcat/webapps
 
 # Copy WAR file from build stage
-COPY --from=build /app/target/My_E-com-0.0.1-SNAPSHOT.war ./ROOT.war
+COPY --from=build /target/My_E-com-0.0.1-SNAPSHOT.war ./ROOT.war
 
 # Run Tomcat
 CMD ["catalina.sh", "run"]
