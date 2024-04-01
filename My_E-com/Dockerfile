@@ -7,8 +7,7 @@ FROM maven:3-openjdk-17 AS build
 
 COPY . .
 
-# Resolve Maven dependencies
-RUN mvn dependency:go-offline
+
 
 # Build the project
 RUN mvn package -DskipTests && \
