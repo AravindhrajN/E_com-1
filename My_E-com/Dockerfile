@@ -22,7 +22,8 @@ FROM tomcat:9-jdk17-openjdk-slim AS deploy
 WORKDIR /usr/local/tomcat/webapps
 
 
-COPY --from=build /app/target/My_E-com-0.0.1-SNAPSHOT.war ./ROOT.war
+COPY --from=build /app/target/My_E-com-0.0.1-SNAPSHOT.war /app/ROOT.war
+
 
 
 # Run Tomcat
