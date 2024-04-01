@@ -1,5 +1,5 @@
 services:
   - type: web
-    name: My_E-com
+    name: E_com-1.app
     dockerfile_path: Dockerfile
     env: docker
