@@ -6,7 +6,7 @@ FROM maven:3-openjdk-17 AS build
 # Copy Maven project files
 
 COPY . .
-COPY pom.xml .
+
 
 
 # Build the project
