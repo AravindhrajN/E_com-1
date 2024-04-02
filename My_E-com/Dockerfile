@@ -15,7 +15,7 @@ RUN mvn package -DskipTests
 FROM tomcat:9-jdk17-openjdk-slim AS deploy
 
 # Copy the WAR file from the build stage to the Tomcat webapps directory
-COPY --from=build target/My_E-com-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
+COPY --from=build target/My_E-com-0.0.1-SNAPSHOT.war.original /usr/local/tomcat/webapps/ROOT.war
 
 # Optional: If you need to customize Tomcat server configurations, you can COPY them here
 # COPY path/to/local/server.xml /usr/local/tomcat/conf/
