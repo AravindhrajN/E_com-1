@@ -20,13 +20,13 @@ COPY --from=build target/My_E-com-0.0.1-SNAPSHOT.war.original /usr/local/tomcat/
 # Optional: If you need to customize Tomcat server configurations, you can COPY them here
 # COPY path/to/local/server.xml /usr/local/tomcat/conf/
 COPY path/to/local/h2/database /My_E-com/data/mydatabase
-spring.h2.console.enabled=true
-spring.sql.init.platform=h2
-spring.datasource.url=jdbc:h2:file:/My_E-com/data/mydatabase
-spring.jpa.hibernate.ddl-auto=update
-spring.datasource.initialization-mode=always
-spring.datasource.username=Ecom
-spring.datasource.password=123
+ENV SPRING_H2_CONSOLE_ENABLED=true
+ENV SPRING_SQL_INIT_PLATFORM=h2
+ENV SPRING_DATASOURCE_URL=jdbc:h2:file:/My_E-com/data/mydatabase
+ENV SPRING_JPA_HIBERNATE_DDL_AUTO=update
+ENV SPRING_DATASOURCE_INITIALIZATION_MODE=always
+ENV SPRING_DATASOURCE_USERNAME=Ecom
+ENV SPRING_DATASOURCE_PASSWORD=123
 # Tomcat listens on port 8080
 EXPOSE 8080
 
