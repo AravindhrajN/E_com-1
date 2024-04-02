@@ -5,7 +5,7 @@ FROM maven:3-openjdk-17 AS build
 
 
 # Copy Maven project files to the container
-COPY pom.xml 
+COPY pom.xml . 
 COPY src /src
 
 # Build the project and skip tests to speed up the build
