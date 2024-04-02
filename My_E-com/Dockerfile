@@ -1,25 +1,29 @@
+
 # Stage 1: Build the Maven project
 FROM maven:3-openjdk-17 AS build
 
 
 
-# Copy Maven project files
-COPY pom.xml .
-COPY src ./src
+# Copy Maven project files to the container
+COPY pom.xml 
+COPY src /src
 
-
-
-# Build the project
+# Build the project and skip tests to speed up the build
 RUN mvn package -DskipTests
 
 # Stage 2: Deploy to Tomcat
 FROM tomcat:9-jdk17-openjdk-slim AS deploy
 
-# Set working directory
+# Copy the WAR file from the build stage to the Tomcat webapps directory
 COPY --from=build target/My_E-com-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
 
+# Optional: If you need to customize Tomcat server configurations, you can COPY them here
+# COPY path/to/local/server.xml /usr/local/tomcat/conf/
+
+# Tomcat listens on port 8080
 EXPOSE 8080
 
-# Run the WAR file
-ENTRYPOINT ["java","-jar",  " /app.war"]
+# Run Tomcat
+CMD ["catalina.sh", "run"]
+
 
