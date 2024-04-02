@@ -1,28 +1,13 @@
-# Stage 1: Build the Maven project
-FROM maven:3-openjdk-17 AS build
+# Use the official OpenJDK image as a parent image
+FROM openjdk:17
 
 
 
-# Copy Maven project files
-COPY pom.xml .
+# Copy the WAR file from your target directory into the container
+COPY target/My_E-com-0.0.1-SNAPSHOT.war  /app.war
 
+# Make port 8080 available to the world outside this container
+EXPOSE 8080
 
-
-
-# Build the project
-RUN mvn package -DskipTests && \
-    rm -rf target/*
-
-# Stage 2: Deploy to Tomcat
-FROM tomcat:9-jdk17-openjdk-slim AS deploy
-
-# Set working directory
-WORKDIR /usr/local/tomcat/webapps
-
-
-COPY --from=build /target/My_E-com-0.0.1-SNAPSHOT.war /app.war
-
-
-
-# Run Tomcat
-CMD ["catalina.sh", "run"]
+# Run the WAR file
+ENTRYPOINT ["java","-jar"," /app.war"]
