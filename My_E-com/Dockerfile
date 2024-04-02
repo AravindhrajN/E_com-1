@@ -17,7 +17,7 @@ FROM tomcat:10-jdk17-openjdk-buster AS deploy
 # Copy the WAR file from the build stage to the Tomcat webapps directory
 COPY --from=build target/My_E-com-0.0.1-SNAPSHOT.war.original /usr/local/tomcat/webapps/ROOT.war
 
-ENV SPRING_DATASOURCE_URL=jdbc:mysql://127.0.0.1:3306/Shoemaker
+ENV SPRING_DATASOURCE_URL=jdbc:mysql://127.0.0.1:3306/shoemaker
 ENV SPRING_DATASOURCE_USERNAME=root
 ENV SPRING_DATASOURCE_PASSWORD=Aravind@123
 ENV SPRING_JPA_HIBERNATE_DDL_AUTO=update
