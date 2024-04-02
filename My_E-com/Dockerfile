@@ -1,4 +1,4 @@
-x# Use the official Tomcat image as the parent image
+
 FROM tomcat:9-jdk17-openjdk-slim
 
 # Copy the WAR file from your target directory to the Tomcat webapps directory and rename it to ROOT.war
