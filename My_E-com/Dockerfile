@@ -19,7 +19,7 @@ COPY --from=build target/My_E-com-0.0.1-SNAPSHOT.war.original /usr/local/tomcat/
 
 # Optional: If you need to customize Tomcat server configurations, you can COPY them here
 # COPY path/to/local/server.xml /usr/local/tomcat/conf/
-COPY path/to/local/h2/database /My_E-com/data/mydatabase
+COPY /My_E-com/data/mydatabase /My_E-com/data/mydatabase
 ENV SPRING_H2_CONSOLE_ENABLED=true
 ENV SPRING_SQL_INIT_PLATFORM=h2
 ENV SPRING_DATASOURCE_URL=jdbc:h2:file:/My_E-com/data/mydatabase
