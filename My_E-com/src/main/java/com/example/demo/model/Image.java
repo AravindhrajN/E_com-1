@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
@@ -16,6 +17,7 @@ public class Image {
 	private String name;
 	private String contentype;
 	@Lob
+	@Column(name = "data", columnDefinition = "LONGBLOB")
 	private byte[] data;
 
 	public long getId() {

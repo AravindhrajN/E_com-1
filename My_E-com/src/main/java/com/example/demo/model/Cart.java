@@ -4,8 +4,13 @@ import java.util.LinkedList;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 @Component
+@Entity
 public class Cart {
+	@Id
 	private int id;
 	private String Pname;
 	private int Pprice;
