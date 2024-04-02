@@ -12,7 +12,7 @@ COPY src /src
 RUN mvn package -DskipTests
 
 # Stage 2: Deploy to Tomcat
-FROM tomcat:9-jdk17-openjdk-slim AS deploy
+FROM tomcat:10-jdk17-openjdk-buster AS deploy
 
 # Copy the WAR file from the build stage to the Tomcat webapps directory
 COPY --from=build target/My_E-com-0.0.1-SNAPSHOT.war.original /usr/local/tomcat/webapps/ROOT.war
