@@ -50,7 +50,7 @@ public class User_Control {
 
 	}
 
-	@GetMapping("/user")
+	@GetMapping()
 	public String home(Model model) {
 		// ADD THE PRODUCT
 		List<Product> pro = pdao.findAll();
