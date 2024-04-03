@@ -37,13 +37,13 @@
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		 <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-        <version>8.0.28</version> <!-- Use the latest version -->
-    </dependency>
+		<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <scope>runtime</scope>
+</dependency>
    
-<!-- Hibernate MySQL Dialect -->
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
