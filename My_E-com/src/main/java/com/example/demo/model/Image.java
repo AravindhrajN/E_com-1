@@ -17,7 +17,6 @@ public class Image {
 	private String name;
 	private String contentype;
 	@Lob
-	@Column(name = "data", columnDefinition = "LONGBLOB")
 	private byte[] data;
 
 	public long getId() {
