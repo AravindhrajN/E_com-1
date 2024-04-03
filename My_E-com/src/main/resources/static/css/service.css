@@ -2,8 +2,8 @@ body{
 	background-image: url("/css/images/serviceback.jpg");
 	 background-size: 100% auto; /* Stretch the image to cover the full width */
   background-repeat: no-repeat; /* Prevent the image from repeating */
-  background-position: center;
-  background-attachment:fixed;
+
+      background-color: lightgrey;
 	  
 	 
 }
@@ -16,10 +16,10 @@ h2{ text-align: center;
 p{
 	margin-right: 35%;
 	font-family:Verdana, Geneva, Tahoma, sans-serif;
-	font-weight: 500px;
+	font-weight: 500;
 	font-size: 20px;
 	font-style: oblique;
-	line-height: 1.5cm;
+	line-height: 1cm;
 	color: black;
 	
 }
@@ -46,5 +46,37 @@ h4{
 	font-style: oblique;
 	line-height: 1.5cm;
 	color: black;
+	
+}
+@media only screen and (max-width:768px){
+	
+	
+
+.head {
+    /* text-align: left; */
+    /* margin-right: 0%; */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 500;
+    /* font-size: 20px; */
+    font-size: small;
+    font-style: oblique;
+    line-height: 0.8cm;
+    color: black;
+}
+
+p {
+    margin: auto;
+    /* margin-right: 35%; */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    font-style: oblique;
+    line-height: 1.5cm;
+    color: black;
+    font-size: small;
+    line-height: 0.8cm;
+    text-align: center;
+}
+	
 	
 }
