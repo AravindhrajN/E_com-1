@@ -179,7 +179,7 @@ body{
         width: 100%;
         margin: 0;
         flex-direction: row;
-    
+    flex-wrap: wrap;
     }
     .iduser {
       /* width: 5%; */
@@ -188,6 +188,7 @@ body{
       font-size: xx-large;
       /* margin-right: auto; */
       /* margin-left: 1%; */
+      width: auto;
       margin: auto;
       margin-top: 2%;
       text-decoration: none;
@@ -195,13 +196,13 @@ body{
   ul.navbar {
     display: flex;
     width: 100%;
-    padding: 2%;
+    padding: 5%;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
 }
 ul.navbar li {
-  padding: 3%;
+  padding: 5%;
   display: inline-block;
 }
 ul.navbar li a {
